@@ -37,7 +37,7 @@ func ApplyRule(outputs Outputs, rule Rule) error {
 		return fmt.Errorf("no output configuration for rule %v", rule.Name)
 	}
 
-	after := append(globalOpts.cfg.ExecuteAfter, rule.ExecuteAfter...)
+	after := append(rule.ExecuteAfter, globalOpts.cfg.ExecuteAfter...)
 	if len(after) > 0 {
 		for _, cmd := range after {
 			cmds = append(cmds, exec.Command("sh", "-c", cmd))
